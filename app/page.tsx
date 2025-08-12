@@ -27,10 +27,8 @@ export default function Home() {
 
   async function sendMagicLink() {
     setLoading(true);
-    const { error } = await supabase.auth.signInWithOtp({
-      email,
-      options: { emailRedirectTo: window.location.origin }
-    });
+    const { error } = await supabase.auth.signInWithOtp({ email });
+
     setLoading(false);
     if (error) alert(error.message);
     else alert("Check your email");
